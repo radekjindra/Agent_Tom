@@ -1,0 +1,162 @@
+/**
+* Hlavička stránky
+*/
+/* vycentrování hlavičky */
+#hlavicka {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* obrázek v hlavičce*/
+#pojistovak {
+    width: 35px;
+    height: 40px;
+    margin-left: 2px;
+}
+
+/* vypnutí potržení u odkazu agenta Toma */
+#agentTom {
+    color: yellowgreen;
+    text-decoration: none;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 1.5rem;
+    margin-left: 200px;
+}
+
+#portal {
+    color: yellow;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: italic;
+    font-size: 0.5rem;
+}
+
+#svatek {
+    color: aliceblue;
+    font-size: 0.75rem;
+}
+
+
+#dnesniSvatek {
+    color: red;
+}
+
+#zitrejsiSvatek {
+    color: cyan;
+    margin-right: 5px;
+}
+
+/**
+* Tělo stránky
+*/
+
+/* vypnutí posuvníku  */
+body {
+    overflow-y: hidden;
+    overflow-x: hidden;
+    text-decoration: none;
+}
+
+ .outer-container {
+    display: table;
+    width: 100%;
+    height: 50%;
+    
+  }
+  
+  .inner-container {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    
+  }
+  
+  .centered-content {
+    margin-top: 6%;
+    display: inline-block;
+    background: #FFF;
+    padding: 20px;
+/*
+    border: 1px solid #000;
+    background: #CCC;*/
+  }
+  
+#logo {
+    height: 110px;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+    background: url(../obrazky/ich.jpg) no-repeat;
+    background-size: 110px 110px;
+    background-color:bisque;
+    margin: 10px 500px 10px;
+    border: 2px solid black;
+    
+}
+
+#logo>* {
+    margin: 0 0 0 120px;
+}
+
+
+#logo h1 {
+    font-weight: normal;
+    font-size: 1.5em;
+    line-height: 1.2em;
+    color: white;
+    padding-top: 2px;
+    align-items: center;
+}
+
+#logo h1 span {
+    font-weight: bold;
+    text-transform: uppercase;
+    align-items: center;
+}
+
+#logo small {
+    font-size: 0.85em;  
+    padding-top: 0px;
+    padding-bottom: 5px;
+    text-align:left;
+}
+
+#odkazWebAutora {
+    text-decoration: none;
+    color: brown;
+}
+
+#odkazLinkedinAutora{
+    text-decoration: none;
+    color: rgb(42, 138, 165);
+}
+
+#odkazEmailAutora{
+    text-decoration: none;
+}
+/**
+* Patička stránky
+*/
+
+
+/* barva textu odkazu*/
+#jindrovi {
+    color: rgb(251, 255, 0);
+    text-decoration: none;
+}
+
+#itnetwork {
+    color: chartreuse;
+    text-decoration: none;
+    justify-content: center;
+}
+
+#itnetworkObrazek {
+    text-decoration: none;
+}
+
+#paticka {
+    text-decoration: none;
+    text-align: center;
+    justify-content: center;
+}

@@ -1,0 +1,19 @@
+# .htaccess soubor nastavení Apache pro ITnetworkMVC
+
+Options -Indexes
+
+RewriteEngine On
+RewriteBase /
+
+# stanovení podmínek proRewriteRule
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# zákaz přípon pro index.php
+RewriteRule !\.(pdf|js|ico|gif|jpg|png|css|rar|zip|tar\.gz)$ index.php [L]
+
+# přidání phtml 
+AddType application/x-httpd-php .php .phtml
+
+# skrytí autentizačního souboru
+AddType application/x-httpd-php .inc

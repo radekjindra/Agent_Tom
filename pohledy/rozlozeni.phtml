@@ -1,0 +1,51 @@
+<?php
+// start session
+session_start();
+// Nastavení interního kódování pro funkce pro práci s řetězci
+mb_internal_encoding("UTF-8");
+// Automatické načtení tříd
+function autoloadFunkce(string $trida) : void
+{
+    // vypsání proměnné
+    /* var_dump($trida); */
+    // Končí název třídy řetězcem "Kontroler" ?
+   if (preg_match('/Kontroler$/', $trida))	
+       require("../kontrolery/" . $trida . ".php");
+   else
+       require("../modely/" . $trida . ".php");
+       
+}
+
+// Registrace callbacku
+spl_autoload_register("autoloadFunkce");
+?>
+
+<!DOCTYPE html>
+<html lang="cs-cz">
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <!-- Bootstrapové scripty -->
+  <?php require_once('../pohledy/scripty.phtml'); ?>
+ <title>Projekt PojištěnciApp</title>
+</head>
+
+<body>
+ <header>
+  <!-- Hlavička stránky -->
+  <?php require_once('../pohledy/hlavicka.phtml'); ?> 
+ </header>
+
+ <!-- Záložková navigace -->    
+  <?php require_once('../pohledy/navigace_zalozek.phtml'); ?>
+
+ <article>
+  <!-- Záložky aplikace -->
+  <?php require_once('../pohledy/obsah_zalozek.phtml'); ?>
+ </article>
+
+ <footer>
+  <!-- Patička stránky-->
+  <?php require_once('../pohledy/paticka.phtml'); ?>
+ </footer>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<div class="tab-content" id="navigace-obsah" title=" ">
+
+    <!-- Obsah dynamycké karty O aplikaci -->
+    <div class="tab-pane fade" id="o-aplikaci" role="tabpanel" aria-labelledby="o-aplikaci-tab" title=" ">
+     <!-- O aplikaci -->
+     <?php require_once('Oaplikaci.phtml'); ?>   
+    </div>
+    
+    <!-- Obsah dynamycké karty Pojištěnci -->
+    <div class="tab-pane fade active show" id="pojistenci" role="tabpanel" aria-labelledby="pojistenci-tab" title=" ">
+      <!-- Tabulka -->
+      <?php require_once('tabulkaPojistenec.phtml'); ?>   
+      <!-- Formulář -->
+      <?php require_once('formularPojistenec.phtml'); ?>
+    </div>
+
+    <!-- Obsah dynamycké karty Pojištění -->
+    <div class="tab-pane fade d-flex flex-column-reverse" id="pojisteni" role="tabpanel" aria-labelledby="pojisteni-tab" title=" ">
+      <!-- Formulář -->
+      <?php require_once('formularPojisteni.phtml'); ?>
+      <!-- Tabulka -->
+      <?php require_once('tabulkaPojisteni.phtml'); ?>   
+    </div>
+      
+    <!-- Obsah dynamycké karty Autor -->
+    <div class="tab-pane fade d-flex flex-column-reverse" id="autor" role="tabpanel" aria-labelledby="autor-tab" title=" ">
+      <!--  -->
+      <?php require_once('oAutorovi.phtml'); ?>
+      
+    </div>
+
+
+</div>

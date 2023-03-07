@@ -1,0 +1,125 @@
+<form method="post" id="needs-validation" novalidate="novalidate">
+ <!-- hlavička -->
+    <div class="form-row m-0">
+        <div class="form-group m-0 col"><hr></div>
+        <div class="form-group m-0 col-auto "><div class="p-1 m-0 bg-primary text-white small">Nový pojištěnec</div></div>
+        <div class="form-group m-0 col"><hr></div>
+    </div>
+  <!-- první řádek -->   
+    <div class="form-row m-0" >
+        <div class="form-group m-0 col-1" >
+         <!-- prázdný slopec -->
+        </div>
+        <div class="form-group m-0 col-1" >
+         <!-- vložení dropdownu pro výběr titulu --> 
+         <?php require_once('titul.phtml'); ?>
+         <label class="small m-0" for="registrace-titul" title="Vyberte titul" >Titul</label>
+         <input type="text"  list='listid' class="form-control form-control-sm m-0" placeholder="---." id="registrace-titul" title="Vyberte titul" name="titul">
+        </div>
+        <div class="form-group m-0 col-3" >
+            <label class="small m-0" for="registrace-jmeno" >Jméno</label>
+            <input  type="text" class="form-control form-control-sm m-0" placeholder="Jméno" id="registrace-jmeno"  name="jmeno" required="required">
+            <div class="invalid-feedback m-0"><small>Zadejte jméno pojištěnce.</small></div>
+        </div>
+        <div class="form-group m-0 col-3" >
+            <label class="small m-0" for="registrace-prijmeni" >Příjmení</label>
+            <input  type="text" class="form-control form-control-sm m-0" placeholder="Příjmení" id="registrace-prijmeni"  name="prijmeni" required="required">
+            <div class="invalid-feedback m-0"><small>Zadejte příjmení pojištěnce.</small></div>
+        </div>
+
+        <div class="form-group m-0 col-2" title="Zadej datum narození ">
+            <label class="small m-0" for="registrace-narozeni" >Narození</label>
+            <input type="date" name="narozen"  class="form-control form-control-sm m-0 p-1" placeholder="DD.MM.RRRR" id="registrace-narozeni" title="Zadej datum narození ve formátu den.měsíc.rok [01.08.2021]" name="narozen" required="required">
+            <div   class="invalid-feedback m-0"><small>Zadejte datum narození pojištěnce</small></div>
+        </div>
+    </div>
+
+   <!-- druhý řádek -->
+    <div class="form-row m-0" >
+        <div class="form-group m-0 col-2"  >
+          <!--  -->
+        </div>
+       <div class="form-group m-0 col-3" >
+        <label class="small m-0" for="registrace-email" >Email</label>
+        <input class="form-control form-control-sm m-0" name="email" type="email" id="registrace-email" placeholder="honzanovotny@seznam.cz" required="required">
+        <div class="invalid-feedback m-0"><small>Zadejte email pojištěnce.</small></div>
+       </div>
+   
+       <div class="form-group m-0 col-3" >
+        <label class="small m-0" for="registrace-telefon" >Telefon</label>
+        <input class="form-control form-control-sm m-0" onkeyup="pridatMezery(this)" name="telefon" type="text" id="registrace-telefon" placeholder="731 584 972" required="required">
+        <div class="invalid-feedback m-0"><small>Zadejte telefon pojištěnce.</small></div>
+       </div>
+
+    </div>    
+
+
+   <!-- třetí řádek -->
+    <div class="form-row m-0" >
+        <div class="form-group m-0 col-2"  >
+          <!--  -->
+        </div>
+        <div class="form-group m-0 col-3" >
+            <label class="small m-0" for="registrace-ulice" >Ulice a číslo popisné</label>
+            <input type="text" class="form-control form-control-sm m-0" placeholder="Ulice" id="registrace-ulice"  name="ulice" required="required">
+            <div class="invalid-feedback m-0"><small>Zadejte jméno ulice pojištěnce.</small></div>
+        </div>
+        <div class="form-group m-0 col-3" >
+            <label class="small m-0" for="registrace-mesto" >Město</label>
+            <input type="text" class="form-control form-control-sm m-0" placeholder="Město" id="registrace-mesto"  name="mesto" required="required">
+            <div class="invalid-feedback m-0"><small>Zadejte město pojištěnce.</small></div>
+        </div>
+        <div class="form-group m-0 col-2" >
+            <label class="small m-0" for="registrace-psc" >PSČ</label>
+            <input type="text" onkeyup="pridatMezeru(this)" class="form-control form-control-sm m-0" placeholder="PSČ" id="registrace-psc"  name="psc" required="required">
+            <div class="invalid-feedback m-0"><small>Zadejte PSČ pojištěnce.</small></div>
+        </div>
+    </div>    
+   
+    <!-- čtvrtý řádek -->
+    <div class="form-row m-0" >
+        <div class="form-group m-0 col-1"  >
+            <!--  -->
+        </div>
+        <div class="form-group m-0 col-1" >
+            <input class="btn btn-outline-primary btn-sm m-2"  id="registrace-uloz" type="submit" value="Uložit">
+        </div>
+    </div>
+   
+</form>
+
+<!-- vložení dat do tabulky  -->
+<?php
+if ($_POST)
+ {	
+  $datum = '';  
+  $datum = date("d.m.Y", strtotime($_POST['narozen']));
+  // příkaz na uložení záznamů    		
+  Db::query('
+  INSERT INTO pojistenci_db (titul, jmeno, prijmeni, narozen, ulice, psc, mesto,email,telefon) VALUES (?,?,?,?,?,?,?,?,?)',
+  trim($_POST['titul']),
+  trim($_POST['jmeno']), 
+  trim($_POST['prijmeni']), 
+  trim($datum),
+  trim($_POST['ulice']),
+  trim($_POST['psc']), 
+  trim($_POST['mesto']), 
+  trim($_POST['email']), 
+  trim($_POST['telefon']));
+  // promazání proměnných po uložení záznamu
+  $_POST['titul']='';
+  $_POST['jmeno']=''; 
+  $_POST['prijmeni']=''; 
+  $datum='';
+  $_POST['ulice']='';
+  $_POST['psc']=''; 
+  $_POST['mesto']=''; 
+  $_POST['email']=''; 
+  $_POST['telefon']='';
+  
+  // hlášení o úspěchu
+  echo('<div class="text-center bg-success text-white">Záznam úspěšně uložen</div>');
+  // refresh stránky po 1 sekundě
+  echo ("<meta http-equiv='refresh' content='1'>");
+  
+ }

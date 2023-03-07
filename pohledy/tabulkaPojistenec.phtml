@@ -1,0 +1,65 @@
+<table  id="tabulka-pojistenec" class="table table-striped table-sm"> 
+       <thead class="text-left  ">
+         <tr>
+            <th>Titul</th>
+            <th>Jméno</th>
+            <th>Příjmení</th>
+            <th>Narozen</th>
+            <th class="col-2">Ulice</th>
+            <th>Město</th>
+            <th>PSČ</th>
+            <th class="col-2">Email</th>
+            <th>Telefon</th>
+            <th></th>
+            <th></th>
+            
+        </tr>
+      </thead>
+    <tbody >
+      
+     <?php 
+      // příkaz na obrácené pořadí pojistenec_id pro lepší kontrolu nového záznamu v tabulce
+      $uzivatele = Db::queryAll('SELECT * FROM `pojistenci_db` ORDER BY `pojistenci_db`.`pojistenec_id` DESC');
+      foreach ($uzivatele as $u)
+		{
+            echo(' <tr><td>' . htmlspecialchars($u['titul']));
+            echo('</td><td>' . htmlspecialchars($u['jmeno']));
+            echo('</td><td>' . htmlspecialchars($u['prijmeni']));
+            echo('</td><td>' . htmlspecialchars($u['narozen']));
+            echo('</td><td class="col-2">' . htmlspecialchars($u['ulice']));
+            echo('</td><td>' . htmlspecialchars($u['mesto']));
+            echo('</td><td>' . htmlspecialchars($u['psc']));
+            echo('</td><td class="col-2">' . htmlspecialchars($u['email']));    
+            echo('</td><td>' . htmlspecialchars($u['telefon']));    
+            echo('</td><td>');
+            // obalení tlačítka >> vymaž záznam <<
+            
+            echo('
+                  <form action="./php/vymazZaznam.php" method="post">
+                  <input type="hidden" name="id" value="'.htmlspecialchars($u['pojistenec_id']).'">
+                  <button onclick="return confirm(\'Opravdu chcete tento záznam vymazat ? \') " id="tl-vymaz" class="btn btn-outline-danger btn-sm" title="Smaž záznam"></button> 
+                  </form></td><td>  
+                 ');
+            // obalení tlačítka >> edituj záznam <<
+            
+            echo('<form action="./php/editujZaznam.php" method="post">
+                   <input  type="hidden" name="editPojistenec" value="'.htmlspecialchars($u['pojistenec_id']).'">
+                   <input  type="hidden" name="editTitul"      value="'.htmlspecialchars($u['titul']).'">
+                   <input  type="hidden" name="editJmeno"      value="'.htmlspecialchars($u['jmeno']).'">
+                   <input  type="hidden" name="editPrijmeni"   value="'.htmlspecialchars($u['prijmeni']).'">
+                   <input  type="hidden" name="editNarozen"    value="'.htmlspecialchars($u['narozen']).'">
+                   <input  type="hidden" name="editUlice"      value="'.htmlspecialchars($u['ulice']).'">
+                   <input  type="hidden" name="editMesto"      value="'.htmlspecialchars($u['mesto']).'">
+                   <input  type="hidden" name="editEmail"      value="'.htmlspecialchars($u['email']).'">
+                   <input  type="hidden" name="editTelefon"    value="'.htmlspecialchars($u['telefon']).'">
+                   <input  type="hidden" name="editPSC"        value="'.htmlspecialchars($u['psc']).'">
+                   <button  id="tl-uprav" class="btn btn-outline-warning btn-sm" title="Edituj záznam"></button>
+                  </form></td>');
+            echo('</td>');
+            echo('</tr>');
+        }
+     ?>
+    </tbody>
+</table>
+
+ 

@@ -1,0 +1,54 @@
+<form method="post" id="needs-validation-2" novalidate="novalidate-2">
+    <!-- hlavička -->
+    <div class="form-row m-1">
+        <div class="form-group col">
+            <hr>
+        </div>
+        <div class="form-group col-auto ">
+            <div class="p-1 mb-1 bg-primary text-white small">Přidat pojištení</div>
+        </div>
+        <div class="form-group col">
+            <hr>
+        </div>
+    </div>
+    <!-- první řádek -->
+    <div class="form-row">
+        <div class="form-group m-0 col-1">
+            <!-- prázdný slopec -->
+        </div>
+        <div class="form-group m-0 col-2">
+            <!-- vložení dropdownu pro výběr titulu -->
+            <?php require_once('typPojisteni.phtml'); ?>
+            <label class="small m-0" for="registrace-pojisteni" title="Vyberte typ pojištění">Produkty</label>
+            <input type="text" list='listTypPojisteni' class="form-control form-control-sm" placeholder="-----" id="registrace-pojisteni" title="Vyberte titul" name="typPojisteni" required="required">
+        </div>
+        <div class="form-group m-0 col-2">
+            <label class="small m-0" for="ulice-mista-pojisteni" title="Napište ulici místa pojištění">Ulice místa pojištění</label>
+            <input type="text" class="form-control form-control-sm" placeholder="-----" id="ulice-pojisteni" title="Napište ulici místa pojištění" name="uliceMistaPojisteni" required="required">
+        </div>
+        <div class="form-group m-0 col-2">
+            <label class="small m-0" for="mesto-mista-pojisteni" title="Napište město místa pojištění">Město místa pojištění</label>
+            <input type="text" class="form-control form-control-sm" placeholder="-----" id="mesto-mista-pojisteni" title="Vyberte titul" name="mestoMistaPojisteni" required="required">
+            <div class="invalid-feedback m-0"><small>Zadejte město místa pojištění.</small></div>
+        </div>
+        <div class="form-group m-0 col-1" >
+            <label class="small m-0" for="psc-mista-pojisteni" >PSČ místa</label>
+            <input type="text" onkeyup="pridatMezeru(this)" class="form-control form-control-sm m-0" placeholder="xxx xx" id="registrace-psc"  name="pscMistaPojisteni" required="required">
+            <div class="invalid-feedback m-0"><small>Zadejte PSČ.</small></div>
+        </div>
+         
+    </div>
+
+    <!-- druhý řádek -->
+    <div class="form-row">
+
+    </div>
+
+
+    <!-- třetí řádek -->
+    <div class="form-row">
+    
+    </div>
+
+     
+</form>
